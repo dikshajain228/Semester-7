@@ -1,0 +1,30 @@
+setwd("C:\\Users\\Dell\\Desktop\\college\\lab")
+data<-read.csv("Churn_Modelling.csv")
+data
+nrow(data)
+colnames(data)
+class(data)
+str(data)
+data$EstimatedSalary
+min(data$EstimatedSalary)
+max(data$EstimatedSalary)
+EstimatedSalary_group<-vector(mode="character",length=length(data$EstimatedSalary))
+EstimatedSalary_group
+EstimatedSalary_group[data$EstimatedSalary<10000]<-"Low"
+EstimatedSalary_group
+EstimatedSalary_group[data$EstimatedSalary>=10000 & data$EstimatedSalary < 55000]<-"middle"
+EstimatedSalary_group[data$EstimatedSalary>55000]<-"High"
+EstimatedSalary_group
+spender<-factor(EstimatedSalary_group,levels=c("Low","middle","High"),ordered=TRUE)
+spender
+data<-cbind(data,spender)
+data
+str(data$spender)
+head(data$spender)
+head(data)
+tail(data)
+data$spender
+data[1:6,]
+data[1:10,]
+class(data)
+write.table(data,file="C:\\Users\\Dell\\Desktop\\college\\lab\\data.txt ",sep=",")
